@@ -1,0 +1,86 @@
+<div class= "vh-100 position-relative "id="particles-js">
+
+<div class=" position-absolute top-50 mb-5 start-50 w-75 d-flex justify-content-center align-items-center translate-middle" >
+
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div *ngIf="errorMes" class="alert alert-danger text-center">
+                    <h3>Please Enter valid and un-registered data </h3>
+                </div>
+
+                <div *ngIf=" responseDone" class="alert alert-success text-center">
+                    <h3>Success</h3>
+                </div>
+            <form class=" w-75  mx-auto" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+
+                <h2 class="text-center text-white">Sign Up</h2>
+                
+              <div class="d-flex">
+                <div class="w-50 mt-3 me-2">
+                    <input type="text" placeholder="First Name" formControlName="firstName" class="form-control" id="firstName">
+
+                    <div *ngIf="signUpForm.get('firstName')?.errors && signUpForm.get('firstName')?.touched" class="alert alert-danger">
+
+                        <p *ngIf= "signUpForm.get('firstName')?.errors?.['required']"> Frist name is required </p>
+                        <p *ngIf= "signUpForm.get('firstName')?.errors?.['minlength']">Frist name's minimum length is 3</p>
+
+                    </div>
+                </div>
+
+                <div class="w-50 mt-3">
+
+                    <input type="text" placeholder="Last Name"formControlName="lastName" class="form-control" id="lastName">
+                    <div *ngIf="signUpForm.get('lastName')?.errors && signUpForm.get('lastName')?.touched" class="alert alert-danger">
+
+                        <p *ngIf= "signUpForm.get('lastName')?.errors?.['required']"> Last name is required </p>
+                        <p *ngIf= "signUpForm.get('lastName')?.errors?.['minlength']">Last name's minimum length is 3</p>
+
+                    </div>
+                </div>
+              </div>
+              
+                <div class="w-100 mt-3">
+
+                    <input type="email" placeholder="Email" formControlName="email" class="form-control" id="email">
+                    <div *ngIf="signUpForm.get('email')?.errors && signUpForm.get('email')?.touched" class="alert alert-danger">
+
+                        <p *ngIf= "signUpForm.get('email')?.errors?.['required']"> Email is required </p>
+                        <p *ngIf= "signUpForm.get('email')?.errors?.['email']">Email must be valid</p>
+
+                    </div>
+                </div>
+                <div class="w-100 mt-3">
+
+                    <input type="password" placeholder="Password" formControlName="password" class="form-control" id="password">
+                    <div *ngIf="signUpForm.get('password')?.errors && signUpForm.get('password')?.touched" class="alert alert-danger">
+
+                        <p *ngIf= "signUpForm.get('password')?.errors?.['required']"> Password is required </p>
+                        <p *ngIf= "signUpForm.get('password')?.errors?.['pattern']">Password must contain letters and numbers</p>
+
+                    </div>
+                </div>
+                <div class="w-100 mt-3">
+
+                    <input type="password" placeholder="Confirm your password" formControlName="cPassword" class="form-control" id="cPassword">
+
+                 <div *ngIf="signUpForm.get('cPassword')?.errors && signUpForm.get('cPassword')?.touched" class="alert alert-danger">
+
+                        <p *ngIf= "signUpForm.get('cPassword')?.errors?.['required']"> Confirmation Password is required </p>
+                        <p *ngIf= "signUpForm.get('cPassword')?.errors?.['pattern']">Password must contain letters and numbers</p>
+
+                    </div>
+                </div>
+
+              
+
+                    <button [disabled]="!signUpForm.valid" class="btn myBtn mt-3" type="submit"> Sign Up</button>
+            
+
+            </form>
+        </div>
+        </div>
+
+        </div>
+    
+

@@ -1,0 +1,80 @@
+<div class="container py-5">
+
+    <div class="row ">
+
+        <div class="col-sm-3 offset-sm-9">
+            <button class="btn myBtn float-end" data-bs-toggle="modal" data-bs-target="#addNote">Add Note</button>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="row py-5">
+
+        <div class="col-md-3">
+
+            <div class="bg-danger p-3 position-relative" >
+                <h3>Note tittle</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, mollitia.</p>
+
+             <div class="position-absolute top-0 end-0 p-3">
+                  <div class="dropdown">
+                        <i class="fa-solid fa-ellipsis-vertical dropdown-toggle" data-bs-toggle="dropdown" ></i>                    
+                    <ul class="dropdown-menu">
+                        
+                      <li><a class="dropdown-item" href="#">Edit</a></li>
+                      <li><a class="dropdown-item" href="#">Delete</a></li>
+                    </ul>
+                  </div>
+            </div> 
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal fade" id="addNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Note</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="addNoteForm" (ngSubmit)="addNote()">
+            <div class="modal-body">
+                
+
+                    <div class="mb-3">
+
+                    <input type="text" class="form-control" formControlName ="title" id="exampleFormControlInput1" placeholder="title">
+                    <div *ngIf="addNoteForm.get('title')?.errors && addNoteForm.get('title')?.touched" class="alert alert-danger">
+
+                        <p *ngIf= "addNoteForm.get('title')?.errors?.['required']"> Title is required </p>
+
+                    </div>
+                </div>
+                      <div class="mb-3">
+                        <textarea class="form-control" formControlName ="description" id="exampleFormControlTextarea1" rows="3" placeholder="description"></textarea>
+                        <div *ngIf="addNoteForm.get('description')?.errors && addNoteForm.get('description')?.touched" class="alert alert-danger">
+
+                            <p *ngIf= "addNoteForm.get('description')?.errors?.['required']"> Description is required </p>
+    
+                        </div>
+                    </div>
+                      
+
+
+                 
+   
+                    </div> 
+                
+            
+            <div class="modal-footer">
+              <button type="button" class="btn myBtn" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn myBtn" type="submit">Save changes</button>
+            </div>
+        </form>
+         </div>
+          </div>
+        </div>
+      </div>
